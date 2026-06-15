@@ -1,0 +1,8 @@
+{
+  "device": "firewall-01",
+  "rules": [
+    {"id": "R1", "action": "PERMIT", "source": "192.168.1.0/24", "destination": "ANY", "port": 80},
+    {"id": "R2", "action": "DENY",   "source": "ANY",            "destination": "ANY", "port": 23},
+    {"id": "R3", "action": "PERMIT", "source": "10.0.0.5",       "destination": "ANY", "port": 22}
+  ]
+}

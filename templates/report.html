@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Network Security Change Report</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; background: #f8f9fa; color: #1a1a2e; }
+  h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 4px; }
+  .meta { color: #666; font-size: 0.85rem; margin-bottom: 32px; }
+  .summary { display: flex; gap: 16px; margin-bottom: 32px; }
+  .card { background: #fff; border-radius: 10px; padding: 18px 24px; flex: 1; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .card .num { font-size: 2rem; font-weight: 700; }
+  .card .label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: .05em; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  th { background: #1a1a2e; color: #fff; padding: 12px 16px; text-align: left; font-size: 0.82rem; text-transform: uppercase; letter-spacing: .05em; }
+  td { padding: 11px 16px; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+  .CRITICAL { background: #fee2e2; color: #991b1b; }
+  .HIGH     { background: #ffedd5; color: #9a3412; }
+  .MEDIUM   { background: #fef9c3; color: #854d0e; }
+  .LOW      { background: #dcfce7; color: #166534; }
+  .ADDED    { background: #dcfce7; color: #166534; }
+  .REMOVED  { background: #fee2e2; color: #991b1b; }
+  .MODIFIED { background: #e0f2fe; color: #075985; }
+  footer { margin-top: 32px; font-size: 0.78rem; color: #aaa; text-align: center; }
+</style>
+</head>
+<body>
+<h1>Network Security Change Report</h1>
+<p class="meta">Generated: {{ generated }} &nbsp;|&nbsp; Before: <code>{{ before_path }}</code> &nbsp;?&nbsp; After: <code>{{ after_path }}</code></p>
+
+<div class="summary">
+  <div class="card"><div class="num">{{ result.summary.total }}</div><div class="label">Total changes</div></div>
+  <div class="card"><div class="num" style="color:#16a34a">{{ result.summary.added }}</div><div class="label">Added</div></div>
+  <div class="card"><div class="num" style="color:#dc2626">{{ result.summary.removed }}</div><div class="label">Removed</div></div>
+  <div class="card"><div class="num" style="color:#0369a1">{{ result.summary.modified }}</div><div class="label">Modified</div></div>
+</div>
+
+<table>
+  <thead><tr><th>Type</th><th>ID</th><th>Action</th><th>Source</th><th>Destination</th><th>Port</th><th>Risk</th></tr></thead>
+  <tbody>
+  {% for c in result.changes %}
+  <tr>
+    <td><span class="badge {{ c.type }}">{{ c.type }}</span></td>
+    <td>{{ c.id }}</td>
+    <td>{{ c.action }}</td>
+    <td>{{ c.source }}</td>
+    <td>{{ c.destination }}</td>
+    <td>{{ c.port }}</td>
+    <td><span class="badge {{ c.risk }}">{{ c.risk }}</span></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<footer>NetworkSecurityChangeAnalyzer v0.1.0</footer>
+</body>
+</html>
