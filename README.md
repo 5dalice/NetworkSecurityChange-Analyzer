@@ -2,7 +2,7 @@
 
 A CLI tool that compares two network device configurations (firewall rules, ACLs) and identifies security-relevant changes with automatic risk classification.
 
-![CI](https://github.com/YOUR_USERNAME/NetworkSecurityChange-Analyzer/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/5dalice/NetworkSecurityChange-Analyzer/actions/workflows/ci.yml/badge.svg)
 
 ## Features
 
@@ -15,7 +15,7 @@ A CLI tool that compares two network device configurations (firewall rules, ACLs
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/NetworkSecurityChange-Analyzer.git
+git clone https://github.com/5dalice/NetworkSecurityChange-Analyzer.git
 cd NetworkSecurityChange-Analyzer
 python -m venv venv
 venv\Scripts\activate        # Windows

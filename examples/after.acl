@@ -1,0 +1,5 @@
+﻿! Cisco ACL - after
+permit tcp 10.0.0.0 0.0.0.255 any eq 80
+permit tcp any any eq 3389
+permit tcp any any eq 23
+deny ip any any

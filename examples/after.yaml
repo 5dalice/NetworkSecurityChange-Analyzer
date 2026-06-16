@@ -1,0 +1,17 @@
+﻿device: firewall-02
+rules:
+  - id: R1
+    action: PERMIT
+    source: 192.168.1.0/24
+    destination: ANY
+    port: 80
+  - id: R2
+    action: PERMIT
+    source: ANY
+    destination: ANY
+    port: 23
+  - id: R4
+    action: PERMIT
+    source: ANY
+    destination: ANY
+    port: 3389
